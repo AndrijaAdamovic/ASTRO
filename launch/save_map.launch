@@ -1,0 +1,4 @@
+<launch>
+    <arg name="map_name" default="map"/>
+    <node name="map_saver_node" pkg="map_server" type="map_saver" args="-f $(find crta_diffbot)/maps/$(arg map_name)"/>
+</launch>

@@ -1,0 +1,9 @@
+<launch>
+
+    <include file="$(find crta_diffbot)/launch/rsp.launch" />
+
+    <!-- <include file="$(find crta_diffbot)/launch/start_motors.launch"/> 
+
+    <include file="$(find crta_diffbot)/launch/start_lidar.launch"/>  -->
+
+</launch>
