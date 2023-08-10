@@ -1,15 +1,15 @@
 <launch>
 
-    <arg name="map_file" default="$(find crta_diffbot)/maps/map.yaml"/>
+    <arg name="map_file" default="$(find astro)/maps/map.yaml"/>
     <arg name="view_in_rviz" default="true"/>
     <arg name="move_forward_only" default="true"/>
 
     <node pkg="map_server" name="map_server" type="map_server" args="$(arg map_file)"/>
 
-    <include file="$(find crta_diffbot)/launch/amcl.launch"/>
+    <include file="$(find astro)/launch/amcl.launch"/>
 
-    <include file="$(find crta_diffbot)/launch/move_base.launch">
+    <include file="$(find astro)/launch/move_base.launch">
         <arg name="move_forward_only" value="$(arg move_forward_only)"/>
     </include>
-<node name="rviz" pkg="rviz" type="rviz" args="-d $(find crta_diffbot)/rviz/navigation_robot.rviz" if="$(eval arg('view_in_rviz'))" />
+<node name="rviz" pkg="rviz" type="rviz" args="-d $(find astro)/rviz/navigation_robot.rviz" if="$(eval arg('view_in_rviz'))" />
 </launch>

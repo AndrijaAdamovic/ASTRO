@@ -4,7 +4,7 @@
     <arg name="run_jspg" default="false"/>    <!-- Run  joint_state_publisher_gui (jspg)-->
     <arg name="view_in_rviz" default="false"/>
 
-    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find crta_diffbot)/description/crta_diffbot.urdf.xacro"/> 
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find astro)/description/astro.urdf.xacro"/> 
 
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
         <param name="use_sim_time" value="$(arg use_sim_time)"/>
@@ -12,7 +12,7 @@
 
     <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" if="$(eval arg('run_jspg'))"/>
 
-    <include file="$(find crta_diffbot)/launch/twist_mux.launch"/>
+    <include file="$(find astro)/launch/twist_mux.launch"/>
 
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find crta_diffbot)/rviz/view_robot.rviz" if="$(eval arg('view_in_rviz'))" />
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find astro)/rviz/view_robot.rviz" if="$(eval arg('view_in_rviz'))" />
 </launch>

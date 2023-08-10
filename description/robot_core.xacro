@@ -44,14 +44,14 @@
         <visual>
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
-                <mesh filename="package://crta_diffbot/description/meshes/Chassis.stl" scale="0.001 0.001 0.001"/>
+                <mesh filename="package://astro/description/meshes/Chassis.stl" scale="0.001 0.001 0.001"/>
             </geometry>
             <material name="gray"/>
         </visual>
         <collision>
             <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
-                <mesh filename="package://crta_diffbot/description/meshes/Chassis.stl" scale="0.001 0.001 0.001"/>
+                <mesh filename="package://astro/description/meshes/Chassis.stl" scale="0.001 0.001 0.001"/>
             </geometry>
         </collision>
         <xacro:inertial_box mass="${chassis_mass}" x="${chassis_length}" y="${chassis_width}" z="${chassis_height}">

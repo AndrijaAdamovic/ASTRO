@@ -1,13 +1,13 @@
 <launch>
     <arg name="simulation"  default="false"/>
 
-    <include file="$(find crta_diffbot)/launch/start_gmapping.launch"/>
+    <include file="$(find astro)/launch/start_gmapping.launch"/>
 
     <group if="$(eval arg('simulation'))">
-        <include file="$(find crta_diffbot)/launch/simulation.launch">
+        <include file="$(find astro)/launch/simulation.launch">
         <arg name="view_in_rviz" value="false"/>
         </include>
     </group>
 
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find crta_diffbot)/rviz/slam_robot.rviz"/>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find astro)/rviz/slam_robot.rviz"/>
 </launch>

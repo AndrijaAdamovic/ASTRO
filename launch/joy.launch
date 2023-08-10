@@ -2,7 +2,7 @@
     <node name="joy_node" pkg="joy"  type="joy_node" />
 
     <node name="joy_twist_node" pkg="teleop_twist_joy" type="teleop_node">
-        <rosparam command="load" file="$(find crta_diffbot)/config/joystick.config.yaml" />
+        <rosparam command="load" file="$(find astro)/config/joystick.config.yaml" />
         <remap from="cmd_vel" to="cmd_vel_joy"/>
     </node>
 </launch>

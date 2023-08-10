@@ -2,8 +2,8 @@
 
     <arg name="cmd_vel_out" default="cmd_vel"/>
 
-    <arg name="config_locks"  default="$(find crta_diffbot)/config/twist_mux_locks.yaml"/>
-    <arg name="config_topics" default="$(find crta_diffbot)/config/twist_mux_topics.yaml"/>
+    <arg name="config_locks"  default="$(find astro)/config/twist_mux_locks.yaml"/>
+    <arg name="config_topics" default="$(find astro)/config/twist_mux_topics.yaml"/>
 
     <arg name="config_joy" default="$(find twist_mux)/config/joystick.yaml"/>
 
