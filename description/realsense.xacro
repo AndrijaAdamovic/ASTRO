@@ -1,0 +1,214 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <joint name="realsense_joint" type="fixed">
+        <parent link="chassis"/>
+        <child link="realsense_frame"/>
+        <origin xyz="${realsense_x_offset} 0 ${realsense_z_offset_chassis}" rpy="0 0 0"/>
+    </joint>
+
+    <link name="realsense_frame">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://astro/description/meshes/Intel_RealSense_D435.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="dark_gray"/>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://astro/description/meshes/Intel_RealSense_D435.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+        <!-- <xacro:inertial_box >
+        </xacro:inertial_box> -->
+    </link>
+
+    <joint name="realsense_depth_joint" type="fixed">
+        <parent link="realsense_frame"/>
+        <child link="realsense_depth_frame"/>
+        <origin xyz="0 ${realsense_depth_offset} 0" rpy="0 0 0"/>
+    </joint>
+    <link name="realsense_depth_frame" />
+
+    <joint name="realsense_depth_optical_joint" type="fixed">
+        <parent link="realsense_depth_frame"/>
+        <child link="realsense_depth_optical_frame"/>
+        <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+    </joint>
+    <link name="realsense_depth_optical_frame" />
+
+    <joint name="realsense_infra1_joint" type="fixed">
+        <parent link="realsense_frame"/>
+        <child link="realsense_infra1_frame"/>
+        <origin xyz="0 ${realsense_depth_offset + realsense_depth_to_infra1_offset} 0" rpy="0 0 0"/>
+    </joint>
+    <link name="realsense_infra1_frame" />
+
+    <joint name="realsense_infra1_optical_joint" type="fixed">
+        <parent link="realsense_infra1_frame"/>
+        <child link="realsense_infra1_optical_frame"/>
+        <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+    </joint>
+    <link name="realsense_infra1_optical_frame" />
+
+    <joint name="realsense_infra2_joint" type="fixed">
+        <parent link="realsense_frame"/>
+        <child link="realsense_infra2_frame"/>
+        <origin xyz="0 ${realsense_depth_offset + realsense_depth_to_infra2_offset} 0" rpy="0 0 0"/>
+    </joint>
+    <link name="realsense_infra2_frame" />
+
+    <joint name="realsense_infra2_optical_joint" type="fixed">
+        <parent link="realsense_infra2_frame"/>
+        <child link="realsense_infra2_optical_frame"/>
+        <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+    </joint>
+    <link name="realsense_infra2_optical_frame" />
+
+    <joint name="realsense_color_joint" type="fixed">
+        <parent link="realsense_frame"/>
+        <child link="realsense_color_frame"/>
+        <origin xyz="0 ${realsense_depth_offset + realsense_depth_to_color_offset} 0" rpy="0 0 0"/>
+    </joint>
+    <link name="realsense_color_frame" />
+
+    <joint name="realsense_color_optical_joint" type="fixed">
+        <parent link="realsense_color_frame"/>
+        <child link="realsense_color_optical_frame"/>
+        <origin xyz="0 0 0" rpy="${-pi/2} 0 ${-pi/2}"/>
+    </joint>
+    <link name="realsense_color_optical_frame" />
+
+    <xacro:property name="deg_to_rad" value="0.01745329251994329577" />
+    <gazebo reference="realsense_frame">
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+        <!--<mu>1</mu>-->
+        <mu2>1</mu2>
+        <fdir1>0 0 0</fdir1>
+        <!--<slip1>0</slip1>
+        <slip2>0</slip2>-->
+        <kp>1e+13</kp>
+        <kd>1</kd>
+        <!--<max_vel>0.01</max_vel>
+        <min_depth>0</min_depth>-->
+        <sensor name="realsensecolor" type="camera">
+            <camera name="realsense">
+            <horizontal_fov>${69.4*deg_to_rad}</horizontal_fov>
+            <image>
+                <width>640</width>
+                <height>480</height>
+                <format>RGB_INT8</format>
+            </image>
+            <clip>
+                <near>0.1</near>
+                <far>100</far>
+            </clip>
+            <noise>
+                <type>gaussian</type>
+                <mean>0.0</mean>
+                <stddev>0.007</stddev>
+            </noise>
+            </camera>
+            <always_on>1</always_on>
+            <update_rate>30</update_rate>
+            <visualize>1</visualize>
+        </sensor>
+        <sensor name="realsenseired1" type="camera">
+            <camera name="realsense">
+            <horizontal_fov>${85.2*deg_to_rad}</horizontal_fov>
+            <image>
+                <width>1280</width>
+                <height>720</height>
+                <format>L_INT8</format>
+            </image>
+            <clip>
+                <near>0.1</near>
+                <far>100</far>
+            </clip>
+            <noise>
+                <type>gaussian</type>
+                <mean>0.0</mean>
+                <stddev>0.05</stddev>
+            </noise>
+            </camera>
+            <always_on>1</always_on>
+            <update_rate>90</update_rate>
+            <visualize>0</visualize>
+        </sensor>
+        <sensor name="realsenseired2" type="camera">
+            <camera name="realsense">
+            <horizontal_fov>${85.2*deg_to_rad}</horizontal_fov>
+            <image>
+                <width>1280</width>
+                <height>720</height>
+                <format>L_INT8</format>
+            </image>
+            <clip>
+                <near>0.1</near>
+                <far>100</far>
+            </clip>
+            <noise>
+                <type>gaussian</type>
+                <mean>0.0</mean>
+                <stddev>0.05</stddev>
+            </noise>
+            </camera>
+            <always_on>1</always_on>
+            <update_rate>90</update_rate>
+            <visualize>0</visualize>
+        </sensor>
+        <sensor name="realsensedepth" type="depth">
+            <camera name="realsense">
+            <horizontal_fov>${85.2*deg_to_rad}</horizontal_fov>
+            <image>
+                <width>1280</width>
+                <height>720</height>
+            </image>
+            <clip>
+                <near>0.1</near>
+                <far>100</far>
+            </clip>
+            <noise>
+                <type>gaussian</type>
+                <mean>0.0</mean>
+                <stddev>0.100</stddev>
+            </noise>
+            </camera>
+            <always_on>1</always_on>
+            <update_rate>90</update_rate>
+            <visualize>0</visualize>
+        </sensor>
+    </gazebo>
+
+    <gazebo>
+        <plugin name="realsense" filename="librealsense_gazebo_plugin.so">
+            <prefix>realsense</prefix>
+            <depthUpdateRate>90.0</depthUpdateRate>
+            <colorUpdateRate>30.0</colorUpdateRate>
+            <infraredUpdateRate>90.0</infraredUpdateRate>
+            <depthTopicName>depth/image_raw</depthTopicName>
+            <depthCameraInfoTopicName>depth/camera_info</depthCameraInfoTopicName>
+            <colorTopicName>color/image_raw</colorTopicName>
+            <colorCameraInfoTopicName>color/camera_info</colorCameraInfoTopicName>
+            <infrared1TopicName>infra1/image_raw</infrared1TopicName>
+            <infrared1CameraInfoTopicName>infra1/camera_info</infrared1CameraInfoTopicName>
+            <infrared2TopicName>infra2/image_raw</infrared2TopicName>
+            <infrared2CameraInfoTopicName>infra2/camera_info</infrared2CameraInfoTopicName>
+            <colorOpticalframeName>realsense_color_optical_frame</colorOpticalframeName>
+            <depthOpticalframeName>realsense_depth_optical_frame</depthOpticalframeName>
+            <infrared1OpticalframeName>realsense_infra1_optical_frame</infrared1OpticalframeName>
+            <infrared2OpticalframeName>realsense_infra2_optical_frame</infrared2OpticalframeName>
+            <rangeMinDepth>0.2</rangeMinDepth>
+            <rangeMaxDepth>10.0</rangeMaxDepth>
+            <pointCloud>true</pointCloud>
+            <pointCloudTopicName>depth/color/points</pointCloudTopicName>
+            <pointCloudCutoff>0.25</pointCloudCutoff>
+            <pointCloudCutoffMax>9.0</pointCloudCutoffMax>
+        </plugin>
+    </gazebo>
+</robot>

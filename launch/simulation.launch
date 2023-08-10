@@ -1,10 +1,11 @@
 <launch>
 
-    <arg name="world_name" default="$(find astro)/worlds/test.world"/>
+    <arg name="world_file" default="test"/>
     <arg name="view_in_rviz" default="true"/>
+    <arg name="rviz_file" default="move_robot"/>
 
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
-        <arg name="world_name" value="$(arg world_name)"/>
+        <arg name="world_name" value="$(find astro)/worlds/$(arg world_file).world"/>
         <arg name="paused" value="false"/>
         <arg name="use_sim_time" value="true"/>
         <arg name="gui" value="true"/>
@@ -19,5 +20,5 @@
     <!-- Spawn a robot into Gazebo -->
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model robot"/> 
 
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find astro)/rviz/move_robot.rviz" if="$(eval arg('view_in_rviz'))" />
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find astro)/rviz/$(arg rviz_file).rviz" if="$(eval arg('view_in_rviz'))" />
 </launch>

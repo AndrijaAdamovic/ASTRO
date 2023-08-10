@@ -16,6 +16,13 @@
     <xacro:property name="chassis_length" value="0.32"/>
     <xacro:property name="chassis_width" value="0.337"/>
     <xacro:property name="chassis_height" value="0.085"/>
+    <xacro:property name="chassis_inertial_offset_x" value="0.015"/>
+    <xacro:property name="realsense_x_offset" value="0.175"/>
+    <xacro:property name="realsense_z_offset_chassis" value="0.0425"/>
+    <xacro:property name="realsense_depth_offset" value="0.0175"/>
+    <xacro:property name="realsense_depth_to_infra1_offset" value="0.0"/>
+    <xacro:property name="realsense_depth_to_infra2_offset" value="-0.050"/>
+    <xacro:property name="realsense_depth_to_color_offset" value="0.015"/>
     <xacro:property name="friction_mu" value="10000"/>
 
     <!-- Imports -->
@@ -55,7 +62,7 @@
             </geometry>
         </collision>
         <xacro:inertial_box mass="${chassis_mass}" x="${chassis_length}" y="${chassis_width}" z="${chassis_height}">
-            <origin xyz="0 0 ${chassis_height/2}" rpy="0 0 0"/>
+            <origin xyz="${chassis_inertial_offset_x} 0 ${chassis_height/2}" rpy="0 0 0"/>
         </xacro:inertial_box>
     </link>
 
