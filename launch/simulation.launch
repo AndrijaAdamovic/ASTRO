@@ -1,6 +1,6 @@
 <launch>
 
-    <arg name="world_file" default="test"/>
+    <arg name="world_file" default="basic_obstacles"/>
     <arg name="view_in_rviz" default="true"/>
     <arg name="rviz_file" default="move_robot"/>
 
