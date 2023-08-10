@@ -1,1 +1,1 @@
-# ASTRO (Autonomous System Teaching Robot)
+# ASTRO (Autonomous Systems Teaching Robot)
