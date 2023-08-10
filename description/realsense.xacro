@@ -83,6 +83,7 @@
 
     <xacro:property name="deg_to_rad" value="0.01745329251994329577" />
     <gazebo reference="realsense_frame">
+        <material>Gazebo/DarkGrey</material>
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
