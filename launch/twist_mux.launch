@@ -1,5 +1,4 @@
 <launch>
-
     <arg name="cmd_vel_out" default="cmd_vel"/>
 
     <arg name="config_locks"  default="$(find astro)/config/twist_mux_locks.yaml"/>

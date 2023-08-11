@@ -1,0 +1,6 @@
+<launch>
+    <node pkg="robot_localization" type="ekf_localization_node" name="ekf_localization">
+        <rosparam command="load" file="$(find astro)/config/ekf_localization.yaml"/>
+        <remap from="odometry/filtered" to="odom"/>
+    </node>
+</launch>

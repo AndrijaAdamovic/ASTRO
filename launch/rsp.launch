@@ -1,5 +1,4 @@
 <launch>
-
     <arg name="use_sim_time" default="false" />
     <arg name="run_jspg" default="false"/>    <!-- Run  joint_state_publisher_gui (jspg)-->
     <arg name="view_in_rviz" default="false"/>
@@ -13,6 +12,8 @@
     <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" if="$(eval arg('run_jspg'))"/>
 
     <include file="$(find astro)/launch/twist_mux.launch"/>
+
+    <include file="$(find astro)/launch/sensor_fusion.launch"/>
 
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find astro)/rviz/view_robot.rviz" if="$(eval arg('view_in_rviz'))" />
 </launch>

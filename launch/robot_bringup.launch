@@ -2,8 +2,6 @@
 
     <include file="$(find astro)/launch/rsp.launch" />
 
-    <!-- <include file="$(find astro)/launch/start_motors.launch"/> 
-
-    <include file="$(find astro)/launch/start_lidar.launch"/>  -->
+    <!-- <include file="$(find astro)/launch/start_hardware.launch" /> -->
 
 </launch>

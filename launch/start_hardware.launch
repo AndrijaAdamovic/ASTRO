@@ -1,0 +1,11 @@
+<launch>
+    <!-- MOTORS -->
+    <include file="$(find astro)/launch/start_motors.launch"/> 
+
+    <!-- LiDAR -->
+    <include file="$(find astro)/launch/start_lidar.launch"/> 
+
+    <!-- RealSense -->
+
+    <!-- IMU -->
+</launch>

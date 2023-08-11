@@ -12,12 +12,13 @@
             <wheelDiameter>${wheel_radius * 2}</wheelDiameter>
             <torque>1000</torque>
             <commandTopic>cmd_vel</commandTopic>
-            <odometryTopic>odom</odometryTopic>
+            <odometryTopic>odom_raw</odometryTopic>
             <odometryFrame>odom</odometryFrame>
             <odometrySource>1</odometrySource>
             <robotBaseFrame>base_footprint</robotBaseFrame>
             <publishWheelTF>false</publishWheelTF>
-            <publishOdomTF>true</publishOdomTF>
+            <!-- publishOdomTF false if using sensor fusion (robot_localization), otherwise true -->
+            <publishOdomTF>false</publishOdomTF>
             <publishTf>1</publishTf>
             <wheelTorque>5</wheelTorque>
             <publishWheelJointState>true</publishWheelJointState>

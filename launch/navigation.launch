@@ -1,5 +1,4 @@
 <launch>
-
     <arg name="map_file" default="$(find astro)/maps/map.yaml"/>
     <arg name="view_in_rviz" default="true"/>
     <arg name="move_forward_only" default="true"/>
