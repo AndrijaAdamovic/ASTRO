@@ -3,10 +3,10 @@ raytrace_range: 3.0
 
 transform_tolerance: 0.2
 
-#footprint: [[-0.105, -0.105], [-0.105, 0.105], [0.041, 0.105], [0.041, -0.105]]
-robot_radius: 0.240
+footprint: [[-0.145, 0.1685], [0.09152, 0.1685], [0.175, 0.067382], [0.175, -0.067382], [0.09152, -0.1685], [-0.145, -0.1685]]
+#robot_radius: 0.240
 
-inflation_radius: 0.5
+inflation_radius: 0.75
 cost_scaling_factor: 5.0
 
 lethal_cost_threshold: 100.0
