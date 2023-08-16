@@ -63,7 +63,7 @@
   <depend>rosserial_python</depend>
   <depend>joint_state_publisher</depend>
   <depend>robot_state_publisher</depend>
-  <depend>robot_state_publisher_gui</depend>
+  <!-- <depend>robot_state_publisher_gui</depend> -->
   <depend>amcl</depend>
   <depend>map_server</depend>
   <depend>move_base</depend>
@@ -73,6 +73,8 @@
   <depend>gmapping</depend>
   <depend>rplidar_ros</depend>
   <depend>robot_localization</depend>
+  <depend>twist_mux</depend>
+
 
 
   <!-- The export tag contains other, unspecified, tags -->
