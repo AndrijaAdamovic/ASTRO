@@ -25,7 +25,7 @@
     <xacro:property name="realsense_depth_to_color_offset" value="0.015"/>
     <xacro:property name="imu_x_offset_chassis" value="-0.03"/>
     <xacro:property name="imu_z_offset_chassis" value="0.0881"/>
-    <xacro:property name="friction_mu" value="5.0"/>
+    <xacro:property name="friction_mu" value="10000.0"/>
 
     <!-- Imports -->
     <xacro:include filename="inertial_macros.xacro"/> 

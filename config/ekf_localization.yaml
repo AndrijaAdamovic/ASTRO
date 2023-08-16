@@ -1,6 +1,7 @@
 frequency: 30
 two_d_mode: true
 publish_tf: true
+publish_acceleration: true
  
 # Coordinate frame specification
 odom_frame: odom
@@ -10,11 +11,11 @@ world_frame: odom
  
 # The odom0 configuration
 odom0: /odom_raw
-odom0_config: [true, true, false,
+odom0_config: [false, false, false,
+               false, false, false,
+               true, true, false,
                false, false, true,
-               true,  true,  false,
-               false, false, true,
-               false, false, false,]
+               false, false, false]
 odom0_differential: false
  
 # The imu0 configuration
@@ -23,5 +24,5 @@ imu0_config: [false, false, false,
               false, false, true,
               false, false, false,
               false, false, true,
-              true,  false, false,]
+              true, false, false]
 imu0_differential: false
