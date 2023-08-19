@@ -10,6 +10,23 @@ project(astro)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
+  urdf
+  xacro
+  gazebo_ros
+  rosserial_python
+  joint_state_publisher
+  robot_state_publisher
+  amcl
+  map_server
+  move_base
+  joy
+  teleop_twist_joy
+  teleop_twist_keyboard
+  rviz
+  gmapping
+  rplidar_ros
+  robot_localization
+  twist_mux
 )
 
 ## System dependencies are found with CMake's conventions
