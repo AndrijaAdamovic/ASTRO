@@ -7,7 +7,7 @@ publish_acceleration: true
 odom_frame: odom
 base_link_frame: base_footprint
 world_frame: odom
-#map_frame: map
+# map_frame: map
  
 # The odom0 configuration
 odom0: /odom_raw
