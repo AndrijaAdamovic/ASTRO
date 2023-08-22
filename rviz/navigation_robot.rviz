@@ -6,7 +6,6 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
-        - /RobotModel1/Links1
       Splitter Ratio: 0.5
     Tree Height: 962
   - Class: rviz/Selection
@@ -69,6 +68,8 @@ Visualization Manager:
           Value: true
         fr_caster_wheel:
           Value: true
+        imu_frame:
+          Value: true
         laser_frame:
           Value: true
         left_wheel:
@@ -76,6 +77,24 @@ Visualization Manager:
         map:
           Value: true
         odom:
+          Value: true
+        realsense_color_frame:
+          Value: true
+        realsense_color_optical_frame:
+          Value: true
+        realsense_depth_frame:
+          Value: true
+        realsense_depth_optical_frame:
+          Value: true
+        realsense_frame:
+          Value: true
+        realsense_infra1_frame:
+          Value: true
+        realsense_infra1_optical_frame:
+          Value: true
+        realsense_infra2_frame:
+          Value: true
+        realsense_infra2_optical_frame:
           Value: true
         right_wheel:
           Value: true
@@ -99,8 +118,23 @@ Visualization Manager:
                     {}
                   fr_caster_wheel:
                     {}
+                  imu_frame:
+                    {}
                   laser_frame:
                     {}
+                  realsense_frame:
+                    realsense_color_frame:
+                      realsense_color_optical_frame:
+                        {}
+                    realsense_depth_frame:
+                      realsense_depth_optical_frame:
+                        {}
+                    realsense_infra1_frame:
+                      realsense_infra1_optical_frame:
+                        {}
+                    realsense_infra2_frame:
+                      realsense_infra2_optical_frame:
+                        {}
                   rl_caster_wheel:
                     {}
                   rr_caster_wheel:
@@ -144,6 +178,10 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        imu_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         laser_frame:
           Alpha: 1
           Show Axes: false
@@ -154,6 +192,43 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        realsense_color_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        realsense_color_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        realsense_depth_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        realsense_depth_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        realsense_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        realsense_infra1_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        realsense_infra1_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        realsense_infra2_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+        realsense_infra2_optical_frame:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         right_wheel:
           Alpha: 1
           Show Axes: false
@@ -329,6 +404,15 @@ Visualization Manager:
       Topic: /move_base_simple/goal
       Unreliable: false
       Value: true
+    - Alpha: 1
+      Class: rviz/Polygon
+      Color: 25; 255; 0
+      Enabled: true
+      Name: Polygon
+      Queue Size: 10
+      Topic: /move_base/local_costmap/footprint
+      Unreliable: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -366,10 +450,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 111.25725555419922
+      Scale: 134.635009765625
       Target Frame: <Fixed Frame>
-      X: 0.05187176540493965
-      Y: 2.231801986694336
+      X: 0
+      Y: 0
     Saved: ~
 Window Geometry:
   Displays:
