@@ -3,7 +3,7 @@
     <include file="$(find astro)/launch/start_motors.launch"/> 
 
     <!-- LiDAR -->
-    <include file="$(find astro)/launch/start_lidar.launch"/> 
+    <!-- <include file="$(find astro)/launch/start_lidar.launch"/>  -->
 
     <!-- RealSense -->
 

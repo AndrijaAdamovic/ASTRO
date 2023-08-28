@@ -1,7 +1,12 @@
 <launch>
 
-    <include file="$(find astro)/launch/rsp.launch" />
+    <arg name="view_in_rviz" default="false"/>
 
-    <!-- <include file="$(find astro)/launch/start_hardware.launch" /> -->
+    <include file="$(find astro)/launch/rsp.launch">
+        <arg name="view_in_rviz" value="$(arg view_in_rviz)" />
+    </include>
+
+
+    <include file="$(find astro)/launch/start_hardware.launch" />
 
 </launch>

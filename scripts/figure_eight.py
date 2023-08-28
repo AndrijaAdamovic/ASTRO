@@ -4,15 +4,15 @@
 
 from __future__ import print_function
 import rospy
-from math import cos, pi, sin, sqrt
 from geometry_msgs.msg import Twist
+from math import cos, pi, sin, sqrt
 
 def figure_eight():
     pub = rospy.Publisher('/cmd_vel',Twist, queue_size=10) 
     rate = rospy.Rate(10)
 
     t = 0.0                 
-    a = 2.5
+    a = 1
     count = 0
 
     T = rospy.get_param('~T', 20) 
@@ -20,11 +20,11 @@ def figure_eight():
     path = Twist()  
 
     while not rospy.is_shutdown():
-        xdot = a*cos(4.0*pi*t/T)*4.0*pi/T
-        ydot = a*cos(2.0*pi*t/T)*2.0*pi/T
+        xdot = a*cos(4.0*pi*t/T)*(2.0*pi/T)
+        ydot = a*cos(2.0*pi*t/T)*(2.0*pi/T)
 
-        xdotdot = -a*sin(4*pi*t/T)*(4.0*pi/T)**2
-        ydotdot = -a*sin(2*pi*t/T)*(2.0*pi/T)**2
+        xdotdot = -2*a*sin(4*pi*t/T)*((2.0*pi/T)**2)
+        ydotdot = -a*sin(2*pi*t/T)*((2.0*pi/T)**2)
 
         v = sqrt(xdot**2+ydot**2)
         w = (ydotdot*xdot - xdotdot*ydot) / (xdot**2 + ydot**2)
