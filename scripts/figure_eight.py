@@ -12,10 +12,10 @@ def figure_eight():
     rate = rospy.Rate(10)
 
     t = 0.0                 
-    a = 1
+    a = 0.75
     count = 0
 
-    T = rospy.get_param('~T', 20) 
+    T = rospy.get_param('~T', 25) 
 
     path = Twist()  
 
