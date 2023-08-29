@@ -3,12 +3,12 @@
     <joint name="laser_joint" type="fixed">
         <parent link="chassis"/>
         <child link="laser_frame"/>
-        <origin xyz="${lidar_x_offset} 0 ${chassis_base_to_lidar_height}" rpy="0 0 0"/>
+        <origin xyz="${lidar_x_offset} 0 ${chassis_base_to_lidar_height}" rpy="0 0 ${pi}"/>
     </joint>
 
     <link name="laser_frame">
         <visual>
-            <origin rpy="0 0 ${pi}" xyz="0 0 0.0141"/>
+            <origin rpy="0 0 0" xyz="0 0 0.0141"/>
             <geometry>
                 <mesh filename="package://astro/description/meshes/RPLidarA1.stl" scale="0.001 0.001 0.001"/>
             </geometry>
