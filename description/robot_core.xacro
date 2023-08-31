@@ -11,7 +11,7 @@
     <xacro:property name="lidar_x_offset" value="0.036857"/>
     <xacro:property name="ground_clearance" value="0.0146"/>
     <xacro:property name="base_thickness" value="0.01"/>
-    <xacro:property name="chassis_mass" value="3.0"/>
+    <xacro:property name="chassis_mass" value="7.0"/>
     <xacro:property name="caster_wheel_mass" value="0.02"/>
     <xacro:property name="chassis_length" value="0.32"/>
     <xacro:property name="chassis_width" value="0.337"/>
