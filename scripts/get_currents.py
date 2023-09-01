@@ -8,8 +8,9 @@ import csv
 currents = []
 
 def callback(data): 
-    print(data.effort[0])
-    currents.append(data.effort[0])
+    current = abs(data.effort[1]) - 2*abs(data.effort[0])
+    print(current)
+    currents.append(current)
 
 def get_data():
     rospy.init_node("current_record")
@@ -25,4 +26,4 @@ if __name__ == '__main__':
     except rospy.ROSInterruptException:
         pass
 
-    print(f"min {min(currents)}")
+    print(f"max {max(currents)}")
