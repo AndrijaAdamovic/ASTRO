@@ -1,5 +1,7 @@
 <launch>
-    <node name="joy_node" pkg="joy"  type="joy_node" />
+    <node name="joy_node" pkg="joy"  type="joy_node">
+        <param name="autorepeat_rate" value="100" />
+    </node>
 
     <node name="joy_twist_node" pkg="teleop_twist_joy" type="teleop_node">
         <rosparam command="load" file="$(find astro)/config/joystick.config.yaml" />

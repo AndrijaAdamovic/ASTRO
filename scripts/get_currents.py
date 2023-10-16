@@ -7,8 +7,8 @@ import csv
 
 currents = []
 
-def callback(data): 
-    current = abs(data.effort[1]) - 2*abs(data.effort[0])
+def callback(data):     
+    current = abs(data.effort[1])
     print(current)
     currents.append(current)
 
