@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <joint name="fl_caster_wheels_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link ="fl_caster_wheel"/>
+        <origin xyz="0.096 0.0965 ${ground_clearance}" rpy="0 0 0"/>
+    </joint>
+
+    <link name="fl_caster_wheel">
+        <visual>
+            <geometry>
+                <sphere radius="${ground_clearance}"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+
+        <collision>
+            <geometry>
+                <sphere radius="${ground_clearance}"/>
+            </geometry>
+        </collision>
+
+        <xacro:inertial_sphere mass="${caster_wheel_mass}" radius="${ground_clearance}">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_sphere>
+    </link>
+
+    <gazebo reference="fl_caster_wheel">
+        <material>Gazebo/Blue</material>
+        <mu1 value="0.001"/>
+        <mu2 value="0.001"/>
+    </gazebo>
+
+    <joint name="fr_caster_wheels_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link ="fr_caster_wheel"/>
+        <origin xyz="0.096 -0.0965 ${ground_clearance}" rpy="0 0 0"/>
+    </joint>
+
+    <link name="fr_caster_wheel">
+        <visual>
+            <geometry>
+                <sphere radius="${ground_clearance}"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+
+        <collision>
+            <geometry>
+                <sphere radius="${ground_clearance}"/>
+            </geometry>
+        </collision>
+
+        <xacro:inertial_sphere mass="${caster_wheel_mass}" radius="${ground_clearance}">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_sphere>
+    </link>
+
+    <gazebo reference="fr_caster_wheel">
+        <material>Gazebo/Blue</material>
+        <mu1 value="0.001"/>
+        <mu2 value="0.001"/>
+    </gazebo>
+
+    <joint name="rl_caster_wheels_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link ="rl_caster_wheel"/>
+        <origin xyz="-0.092 0.1265 ${ground_clearance}" rpy="0 0 0"/>
+    </joint>
+
+    <link name="rl_caster_wheel">
+        <visual>
+            <geometry>
+                <sphere radius="${ground_clearance}"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+
+        <collision>
+            <geometry>
+                <sphere radius="${ground_clearance}"/>
+            </geometry>
+        </collision>
+
+        <xacro:inertial_sphere mass="${caster_wheel_mass}" radius="${ground_clearance}">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_sphere>
+    </link>
+
+    <gazebo reference="rl_caster_wheel">
+        <material>Gazebo/Blue</material>
+        <mu1 value="0.001"/>
+        <mu2 value="0.001"/>
+    </gazebo>
+
+    <joint name="rr_caster_wheels_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child link ="rr_caster_wheel"/>
+        <origin xyz="-0.092 -0.1265 ${ground_clearance}" rpy="0 0 0"/>
+    </joint>
+
+    <link name="rr_caster_wheel">
+        <visual>
+            <geometry>
+                <sphere radius="${ground_clearance}"/>
+            </geometry>
+            <material name="blue"/>
+        </visual>
+
+        <collision>
+            <geometry>
+                <sphere radius="${ground_clearance}"/>
+            </geometry>
+        </collision>
+
+        <xacro:inertial_sphere mass="${caster_wheel_mass}" radius="${ground_clearance}">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_sphere>
+    </link>
+
+    <gazebo reference="rr_caster_wheel">
+        <material>Gazebo/Blue</material>
+        <mu1 value="0.001"/>
+        <mu2 value="0.001"/>
+    </gazebo>
+
+</robot>

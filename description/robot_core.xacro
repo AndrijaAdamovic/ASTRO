@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+    <xacro:property name="wheel_radius" value="0.0360"/>
+    <xacro:property name="wheel_separation" value="0.306"/> 
+    <xacro:property name="wheel_thickness" value="0.0160"/>
+    <xacro:property name="wheel_mass" value="0.050"/>
+    <xacro:property name="ground_clearance" value="0.0146"/>
+    <xacro:property name="caster_wheel_mass" value="0.02"/>
+
+    <!-- From base_link -->
+    <xacro:property name="lidar_x_offset" value="0.038471"/>  
+    <xacro:property name="lidar_z_offset" value="0.0838"/>
+
+
+    <xacro:include filename="inertial_macros.xacro"/> 
+    <xacro:include filename="materials.xacro"/>
+    <xacro:include filename="caster_wheels.xacro"/>
+
+    <link name="base_footprint"/>
+
+    <joint name="base_link_joint" type="fixed">
+        <parent link="base_footprint"/>
+        <child  link="base_link"/>
+        <origin xyz="0 0 ${wheel_radius}"/>
+    </joint>
+
+    <link name="base_link"/>
+
+    <joint name="chassis_joint" type="fixed">
+        <parent link="base_link"/>
+        <child  link="chassis"/>
+        <origin xyz="0 0 0"/>
+    </joint>
+
+    <link name="chassis">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://astro/meshes/ASTRO_Chassis.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="gray"/>
+        </visual>
+        <collision>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://astro/meshes/ASTRO_Chassis.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="left_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="left_wheel"/>
+        <origin xyz="0 ${wheel_separation/2} 0" rpy="-${pi/2} 0 0"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="left_wheel">
+        <visual>
+            <geometry>
+                <cylinder length="${wheel_thickness}" radius="${wheel_radius}" />
+            </geometry>
+            <material name="orange"/>
+        </visual>
+
+        <collision>
+            <geometry>
+                <cylinder length="${wheel_thickness}" radius="${wheel_radius}" />
+            </geometry>
+        </collision>
+        <xacro:inertial_cylinder mass="${wheel_mass}" length="${wheel_thickness}" radius="${wheel_radius}">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+    <joint name="right_wheel_joint" type="continuous">
+        <parent link="base_link"/>
+        <child link="right_wheel"/>
+        <origin xyz="0 -${wheel_separation/2} 0" rpy="${pi/2} 0 0"/>
+        <axis xyz="0 0 -1"/>
+    </joint>
+
+    <link name="right_wheel">
+        <visual>
+            <geometry>
+                <cylinder length="${wheel_thickness}" radius="${wheel_radius}" />
+            </geometry>
+            <material name="orange"/>
+        </visual>
+
+        <collision>
+            <geometry>
+                <cylinder length="${wheel_thickness}" radius="${wheel_radius}" />
+            </geometry>
+        </collision>
+
+        <xacro:inertial_cylinder mass="${wheel_mass}" length="${wheel_thickness}" radius="${wheel_radius}">
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+        </xacro:inertial_cylinder>
+    </link>
+
+</robot>
