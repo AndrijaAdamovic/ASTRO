@@ -28,4 +28,12 @@
     <material name="dark_gray">
         <color rgba="0.2 0.2 0.2 1"/>
     </material>
+    
+    <material name="aluminum">
+        <color rgba="0.1 0.1 0.1 1"/>
+    </material>
+    
+    <material name="plastic">
+        <color rgba="0.1 0.1 0.1 1"/>
+    </material>
 </robot>

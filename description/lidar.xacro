@@ -3,19 +3,19 @@
     <joint name="laser_joint" type="fixed">
         <parent link="base_link"/>
         <child link="laser_frame"/>
-        <origin xyz="${lidar_x_offset} 0 ${lidar_z_offset - 0.0171}" rpy="0 0 0"/>
+        <origin xyz="${lidar_x_offset} 0 ${lidar_z_offset - 0.0171}" rpy="0 0 ${pi}"/>
     </joint>
 
     <link name="laser_frame">
         <visual>
-            <origin rpy="0 0 0" xyz="0 0 0.0171"/>
+            <origin rpy="0 0 ${pi}" xyz="0 0 0.0171"/>
             <geometry>
                 <mesh filename="package://astro/meshes/ASTRO_LidarAssembly.stl" scale="0.001 0.001 0.001"/>
             </geometry>
             <material name="dark_gray"/>
         </visual>
         <collision>
-            <origin rpy="0 0 0" xyz="0 0 0.0171"/>
+            <origin rpy="0 0 ${pi}" xyz="0 0 0.0171"/>
             <geometry>
                 <mesh filename="package://astro/meshes/ASTRO_LidarAssembly.stl" scale="0.001 0.001 0.001"/>
             </geometry>
