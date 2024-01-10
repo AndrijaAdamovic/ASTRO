@@ -16,7 +16,6 @@
   <depend>xacro</depend>
   <depend>joint_state_publisher</depend>
   <depend>joint_state_publisher_gui</depend>
-  <!-- <depend>serial</depend> -->
   <!-- <depend>librealsense2</depend> -->
   
 

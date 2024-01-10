@@ -7,6 +7,31 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+find_package(serial REQUIRED)
+find_package(hardware_interface REQUIRED)
+find_package(controller_manager REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(pluginlib REQUIRED)
+
+# add_library(astro SHARED src/astro_diffdrive.cpp src/wheel.cpp src/arduino_comms.cpp)
+
+ament_target_dependencies(
+  diffdrive_arduino
+  hardware_interface
+  controller_manager
+  serial
+  rclcpp
+  pluginlib
+)
+
+# pluginlib_export_plugin_description_file(hardware_interface astro_hardware.xml)
+
+# target_include_directories(
+#   astro_diffdrive
+#   PRIVATE
+#   include
+# )
+
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
