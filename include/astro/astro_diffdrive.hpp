@@ -29,8 +29,12 @@
 #include "rclcpp/time.hpp"
 #include "rclcpp_lifecycle/node_interfaces/lifecycle_node_interface.hpp"
 #include "rclcpp_lifecycle/state.hpp"
+
 #include "astro/visibility_control.h"
 
+
+namespace astro_diffdrive
+{
 class AstroDiffDrive : public hardware_interface::SystemInterface
 {
 
@@ -42,8 +46,6 @@ struct Config
     int baudrate = 0;
     int timeout_ms = 0;
 };
-
-
 
 public:
   RCLCPP_SHARED_PTR_DEFINITIONS(AstroDiffDrive);
@@ -77,6 +79,5 @@ public:
 private:
 
 };
-
-
+}
 #endif  

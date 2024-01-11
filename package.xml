@@ -16,6 +16,11 @@
   <depend>xacro</depend>
   <depend>joint_state_publisher</depend>
   <depend>joint_state_publisher_gui</depend>
+  <depend>hardware_interface</depend>
+  <depend>pluginlib</depend>
+  <depend>rclcpp</depend>
+  <depend>rclcpp_lifecycle</depend>
+  <depend>libserial-dev</depend>
   <!-- <depend>librealsense2</depend> -->
   
 

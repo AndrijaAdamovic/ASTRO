@@ -5,33 +5,34 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-# find dependencies
-find_package(ament_cmake REQUIRED)
-find_package(serial REQUIRED)
-find_package(hardware_interface REQUIRED)
-find_package(controller_manager REQUIRED)
-find_package(rclcpp REQUIRED)
-find_package(pluginlib REQUIRED)
-
-# add_library(astro SHARED src/astro_diffdrive.cpp src/wheel.cpp src/arduino_comms.cpp)
-
-ament_target_dependencies(
-  diffdrive_arduino
+set(THIS_PACKAGE_INCLUDE_DEPENDS
   hardware_interface
-  controller_manager
-  serial
-  rclcpp
   pluginlib
+  rclcpp
+  rclcpp_lifecycle
 )
 
-# pluginlib_export_plugin_description_file(hardware_interface astro_hardware.xml)
+# find dependencies
+find_package(ament_cmake REQUIRED)
+foreach(Dependency IN ITEMS ${THIS_PACKAGE_INCLUDE_DEPENDS})
+  find_package(${Dependency} REQUIRED)
+endforeach()
 
-# target_include_directories(
-#   astro_diffdrive
-#   PRIVATE
-#   include
-# )
+add_library(
+  astro
+  SHARED
+  src/astro_diffdrive.cpp
+)
 
+target_compile_features(astro PUBLIC cxx_std_17)
+target_include_directories(astro PUBLIC
+$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+$<INSTALL_INTERFACE:include/ros2_control_demo_example_2>
+)
+ament_target_dependencies(
+  ros2_control_demo_example_2 PUBLIC
+  ${THIS_PACKAGE_INCLUDE_DEPENDS}
+)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
