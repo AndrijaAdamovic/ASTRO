@@ -5,34 +5,8 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-set(THIS_PACKAGE_INCLUDE_DEPENDS
-  hardware_interface
-  pluginlib
-  rclcpp
-  rclcpp_lifecycle
-)
-
 # find dependencies
 find_package(ament_cmake REQUIRED)
-foreach(Dependency IN ITEMS ${THIS_PACKAGE_INCLUDE_DEPENDS})
-  find_package(${Dependency} REQUIRED)
-endforeach()
-
-add_library(
-  astro
-  SHARED
-  src/astro_diffdrive.cpp
-)
-
-target_compile_features(astro PUBLIC cxx_std_17)
-target_include_directories(astro PUBLIC
-$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
-$<INSTALL_INTERFACE:include/ros2_control_demo_example_2>
-)
-ament_target_dependencies(
-  ros2_control_demo_example_2 PUBLIC
-  ${THIS_PACKAGE_INCLUDE_DEPENDS}
-)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
