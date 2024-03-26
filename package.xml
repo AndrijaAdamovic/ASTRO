@@ -21,6 +21,7 @@
   <depend>rclcpp</depend>
   <depend>rclcpp_lifecycle</depend>
   <depend>libserial-dev</depend>
+  <depend>robot_localization</depend>
   <!-- <depend>librealsense2</depend> -->
   
 

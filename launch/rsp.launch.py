@@ -17,6 +17,7 @@ def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time')
     run_jspg = LaunchConfiguration('run_jspg')
     run_rviz = LaunchConfiguration('run_rviz')
+    run_ekf = LaunchConfiguration('run_ekf')
 
     pkg_path = os.path.join(get_package_share_directory('astro'))
     xacro_file = os.path.join(pkg_path,'description','astro.urdf.xacro')
@@ -46,11 +47,22 @@ def generate_launch_description():
         condition=IfCondition(run_jspg)
     )
 
+    robot_localization_node = Node(
+       package='robot_localization',
+       executable='ekf_node',
+       name='ekf_filter_node',
+       output='screen',
+       parameters=[os.path.join(pkg_path, 'config/ekf.yaml'), {'use_sim_time': LaunchConfiguration('use_sim_time')}],
+       condition=IfCondition(run_ekf)
+    )
+
     return LaunchDescription([
         DeclareLaunchArgument('use_sim_time', default_value='false', description='Use sim time if true'),
-        DeclareLaunchArgument('run_jspg', default_value='true', description='Run joint_state_publisher_gui node'),
-        DeclareLaunchArgument('run_rviz', default_value='true', description='Run Rviz'),
+        DeclareLaunchArgument('run_jspg', default_value='false', description='Run joint_state_publisher_gui Node'),
+        DeclareLaunchArgument('run_rviz', default_value='false', description='Run Rviz'),
+        DeclareLaunchArgument('run_ekf', default_value='true', description='Run Robot Localization Ekf Node'),
         rviz_node,
         jspg_node,
-        robot_state_publisher_node
+        robot_state_publisher_node,
+        robot_localization_node
     ])
